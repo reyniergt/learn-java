@@ -25,3 +25,9 @@ hs_err_pid*
 
 # intellijs
 .idea
+.DS_Store
+*.iml
+
+# maven
+out/
+target/
