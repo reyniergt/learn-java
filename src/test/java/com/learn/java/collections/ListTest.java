@@ -12,10 +12,12 @@ public class ListTest {
         List list = new ArrayList();
         Assert.assertTrue(list.isEmpty());
         addTest(list);
+        Assert.assertEquals(50,list.find(50));
+        Assert.assertEquals(-1, list.find(101));
         deleteTest(list);
     }
 
-    @Test
+    //@Test
     public void linkedListTest() {
         List list = new LinkedList();
         Assert.assertTrue(list.isEmpty());
@@ -30,14 +32,14 @@ public class ListTest {
         Assert.assertFalse(list.isEmpty());
         Assert.assertEquals(0, list.get(0));
         Assert.assertEquals(100, list.get(100));
-        Assert.assertEquals(100, list.size());
+        Assert.assertEquals(101, list.size());
     }
 
     private void deleteTest(List list) {
         list.removeAt(100);
-        Assert.assertEquals(99, list.size());
+        Assert.assertEquals(100, list.size());
         list.removeAt(50);
-        Assert.assertEquals(98, list.size());
+        Assert.assertEquals(99, list.size());
         list.removeAt(0);
         Assert.assertEquals(1, list.get(0));
         while (!list.isEmpty()) {
