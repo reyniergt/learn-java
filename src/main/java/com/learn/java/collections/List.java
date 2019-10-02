@@ -38,4 +38,6 @@ public interface List {
      * @return
      */
     boolean isEmpty();
+
+    void insert(int element, int position);
 }
