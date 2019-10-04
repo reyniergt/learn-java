@@ -11,8 +11,7 @@ public class QueueTest {
 
     @Before
     public void setUp() {
-        //TODO: instanciate the {@link queue}
-        queue = new QueueImpl();
+       queue = new QueueImpl();
     }
 
     @Test

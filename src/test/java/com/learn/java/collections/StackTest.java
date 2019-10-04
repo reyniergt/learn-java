@@ -12,7 +12,6 @@ public class StackTest {
 
     @Before
     public void setUp() {
-        //TODO: instanciate the {@link stack}
         stack = new StackImpl();
     }
 

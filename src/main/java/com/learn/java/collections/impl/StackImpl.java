@@ -1,7 +1,6 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Stack;
-import sun.awt.image.ImageWatched;
 
 public class StackImpl implements Stack {
     private int size;
@@ -14,13 +13,7 @@ public class StackImpl implements Stack {
 
     @Override
     public void push(int element) {
-        LinkedNode newNode = new LinkedNode(element);
-        if(size == 0){
-            firstNode = newNode;
-        }else{
-            newNode.next = firstNode;
-            firstNode = newNode;
-        }
+        firstNode = new LinkedNode(element, firstNode);
         size ++;
     }
 
