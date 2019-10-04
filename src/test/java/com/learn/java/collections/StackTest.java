@@ -1,5 +1,7 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.impl.QueueImpl;
+import com.learn.java.collections.impl.StackImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +13,7 @@ public class StackTest {
     @Before
     public void setUp() {
         //TODO: instanciate the {@link stack}
+        stack = new StackImpl();
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.impl.QueueImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ public class QueueTest {
     @Before
     public void setUp() {
         //TODO: instanciate the {@link queue}
+        queue = new QueueImpl();
     }
 
     @Test
