@@ -3,14 +3,14 @@ package com.learn.java.collections.impl;
 import com.learn.java.collections.List;
 
 
-public class ArrayList implements List {
-
+public class ArrayList<T> implements List<T> {
     private int size;
-    private int[] array;
+    // O(1)
+    private Object[] array;
 
     public ArrayList(){
-        array = new int[10]; // O(1)
         size = 0; // O(1)
+        array = new Object[10];
     }
 
     @Override
@@ -19,10 +19,10 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void add(int element) {//n
+    public void add(T element) {//n
 
         if(array.length == size) { //O(1)
-            int[] arrayAux = new int[size + 10]; // 1
+            Object[] arrayAux = new Object[size + 10]; // 1
             for (int i = 0; i < array.length; i++) { //n
                 arrayAux[i] = array[i]; // 1
             }
@@ -34,8 +34,8 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int get(int position) {//1
-        return array[position];
+    public T get(int position) {//1
+        return (T)array[position];
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int find(int element) {//n
+    public int find(T element) {//n
         for (int i = 0; i < size; i++) {
             if(array[i] == element){
                 return i;
@@ -62,10 +62,10 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void insert(int element, int position) {
+    public void insert(T element, int position) {
 
         if(array.length == size) {
-            int[] arrayAux = new int[size + 10];
+            Object[] arrayAux = new Object[size + 10];
             for (int i = 0; i < array.length; i++) {
                 arrayAux[i < position ? i : i + 1] = array[i];
             }

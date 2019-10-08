@@ -8,11 +8,11 @@ import org.junit.Test;
 
 public class StackTest {
 
-    private Stack stack;
+    private Stack<Integer> stack;
 
     @Before
     public void setUp() {
-        stack = new StackImpl();
+        stack = new StackImpl<>();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class StackTest {
             Assert.assertEquals(String.format("size should be %d", i + 1),
                     i + 1, stack.size());
             Assert.assertEquals(String.format("top should be %d", i),
-                    i, stack.top());
+                    i, (int)stack.top());
         }
 
         Assert.assertFalse("stack should not be empty",
@@ -36,7 +36,7 @@ public class StackTest {
 
         for (int i = 9; i >= 0; i--) {
             Assert.assertEquals(String.format("removed element should be %d", i),
-                    i, stack.pop());
+                    i, (int)stack.pop());
             Assert.assertEquals(String.format("size should be %d", i),
                     i, stack.size());
         }

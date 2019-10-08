@@ -1,7 +1,7 @@
 package com.learn.java.collections;
 
 /** A collection of elements that keeps insertion order **/
-public interface List {
+public interface List<T> {
     /**
      * The current amount of stored elements
      * @return
@@ -12,13 +12,13 @@ public interface List {
      * Stores a new element in the last position
      * @param element
      */
-    void add(int element);
+    void add(T element);
 
     /**
      * Get the element in the given position
      * @param position
      */
-    int get(int position);
+    T get(int position);
 
     /**
      * Remove the element in the given position
@@ -31,7 +31,7 @@ public interface List {
      * @param element
      * @return
      */
-    int find(int element);
+    int find(T element);
 
     /**
      * Is the collection empty?
@@ -39,5 +39,8 @@ public interface List {
      */
     boolean isEmpty();
 
-    void insert(int element, int position);
+    /**
+     * Insert an element in a given position
+     */
+    void insert(T element, int position);
 }

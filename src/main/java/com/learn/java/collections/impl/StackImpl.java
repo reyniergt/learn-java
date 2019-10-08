@@ -2,9 +2,9 @@ package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Stack;
 
-public class StackImpl implements Stack {
+public class StackImpl<T> implements Stack<T> {
     private int size;
-    private LinkedNode firstNode;
+    private LinkedNode<T> firstNode;
 
     public StackImpl(){
         size = 0;
@@ -12,21 +12,21 @@ public class StackImpl implements Stack {
     }
 
     @Override
-    public void push(int element) {
+    public void push(T element) {
         firstNode = new LinkedNode(element, firstNode);
         size ++;
     }
 
     @Override
-    public int pop() {
-        int value = firstNode.value;
+    public T pop() {
+        T value = firstNode.value;
         firstNode = firstNode.next;
         size --;
         return value;
     }
 
     @Override
-    public int top() {
+    public T top() {
         return firstNode.value;
     }
 
@@ -38,20 +38,5 @@ public class StackImpl implements Stack {
     @Override
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    private class LinkedNode {
-        final int value;
-        LinkedNode next;
-
-        private LinkedNode(int value, LinkedNode next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        private LinkedNode(int value) {
-            this.value = value;
-            this.next = null;
-        }
     }
 }

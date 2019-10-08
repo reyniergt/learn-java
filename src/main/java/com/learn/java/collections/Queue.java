@@ -3,19 +3,19 @@ package com.learn.java.collections;
 /**
  * Collection of elements with FIFO behaviour
  */
-public interface Queue {
+public interface Queue<T> {
 
     /**
      * adds a new element
      * @param element
      */
-    void enqueue(int element);
+    void enqueue(T element);
 
     /**
      * removes and returns the first added element
      * @return
      */
-    int dequeue();
+    T dequeue();
 
     /**
      * returns the amount of elements
