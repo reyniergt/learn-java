@@ -9,7 +9,7 @@ public class ListTest {
 
     @Test
     public void arrayListTest() {
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList();
         Assert.assertTrue(list.isEmpty());
         addTest(list);
         insertTest(list);
@@ -20,7 +20,7 @@ public class ListTest {
 
     @Test
     public void linkedListTest() {
-        List list = new LinkedList();
+        List<Integer> list = new LinkedList();
         Assert.assertTrue(list.isEmpty());
         addTest(list);
         insertTest(list);

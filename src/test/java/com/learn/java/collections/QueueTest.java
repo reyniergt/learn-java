@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class QueueTest {
 
-    private Queue queue;
+    private Queue<Integer> queue;
 
     @Before
     public void setUp() {
@@ -33,7 +33,7 @@ public class QueueTest {
 
         for (int i = 0; i < 10; i++) {
             Assert.assertEquals(String.format("removed element should be %d", i),
-                    i, queue.dequeue());
+                    i, (int)queue.dequeue());
             Assert.assertEquals(String.format("size should be %d", 9 - i),
                     9 - i, queue.size());
         }

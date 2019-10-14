@@ -1,14 +1,12 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.List;
-import com.sun.corba.se.impl.orb.ParserTable;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class LinkedList implements List {
+public class LinkedList<T> implements List<T> {
 
     private int size;
-    private LinkedNode firstNode;
-    private LinkedNode lastNode;
+    private LinkedNode<T> firstNode;
+    private LinkedNode<T> lastNode;
 
     public LinkedList (){
         size = 0;
@@ -22,7 +20,7 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void add(int element) {
+    public void add(T element) {
         if(size == 0){
             firstNode = new LinkedNode(element);
             lastNode = firstNode;
@@ -35,8 +33,8 @@ public class LinkedList implements List {
     }
 
     @Override
-    public int get(int position) {
-        LinkedNode node = firstNode;
+    public T get(int position) {
+        LinkedNode<T> node = firstNode;
         for (int i = 0; i < position; i++) {
             node = node.next;
         }
@@ -62,7 +60,7 @@ public class LinkedList implements List {
     }
 
     @Override
-    public int find(int element) {
+    public int find(T element) {
         LinkedNode node = firstNode;
         for (int i = 0; i < size; i++) {
             if(node.value == element) {
@@ -79,34 +77,19 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void insert(int element, int position) {
-        LinkedNode newNode = new LinkedNode(element);
-        if(position == 0){
+    public void insert(T element, int position) {
+        LinkedNode<T> newNode = new LinkedNode(element);
+        if (position == 0) {
             newNode.next = firstNode;
             firstNode = newNode;
         } else {
             LinkedNode nodeAux = firstNode;
-            for (int i = 0; i < position -1; i++) {
+            for (int i = 0; i < position - 1; i++) {
                 nodeAux = nodeAux.next;
             }
             newNode.next = nodeAux.next;
             nodeAux.next = newNode;
         }
-        size ++;
-    }
-
-    private class LinkedNode {
-        final int value;
-        LinkedNode next;
-
-        private LinkedNode(int value, LinkedNode next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        private LinkedNode(int value) {
-            this.value = value;
-            this.next = null;
-        }
+        size++;
     }
 }

@@ -2,19 +2,20 @@ package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Queue;
 
-public class QueueImpl implements Queue {
+public class QueueImpl<T> implements Queue<T> {
 
-    private int size;
-    private LinkedNode firstNode;
-    private LinkedNode lastNode;
+    protected int size;
+    protected LinkedNode<T> firstNode;
+    protected LinkedNode<T> lastNode;
 
     public QueueImpl(){
         size = 0;
         firstNode = null;
+        lastNode = null;
     }
 
     @Override
-    public void enqueue(int element) {
+    public void enqueue(T element) {
         if(size == 0){
             firstNode = new LinkedNode(element);
             lastNode = firstNode;
@@ -27,8 +28,8 @@ public class QueueImpl implements Queue {
     }
 
     @Override
-    public int dequeue() {
-        int value = firstNode.value;
+    public T dequeue() {
+        T value = firstNode.value;
         firstNode = firstNode.next;
         size --;
         return value;
@@ -42,20 +43,5 @@ public class QueueImpl implements Queue {
     @Override
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    private class LinkedNode {
-        final int value;
-        LinkedNode next;
-
-        private LinkedNode(int value, LinkedNode next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        private LinkedNode(int value) {
-            this.value = value;
-            this.next = null;
-        }
     }
 }

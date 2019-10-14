@@ -3,25 +3,25 @@ package com.learn.java.collections;
 /**
  * Collection of elements with LIFO behaviour
  */
-public interface Stack {
+public interface Stack<T> {
 
     /**
      * adds a new element
      * @param element
      */
-    void push(int element);
+    void push(T element);
 
     /**
      * removes and returns the last added element
      * @return
      */
-    int pop();
+    T pop();
 
     /**
      * returns the last added element without removing it
      * @return
      */
-    int top();
+    T top();
 
     /**
      * returns the amount of elements
