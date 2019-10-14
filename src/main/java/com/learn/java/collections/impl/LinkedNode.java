@@ -2,7 +2,7 @@ package com.learn.java.collections.impl;
 
 class LinkedNode<T> {
     final T value;
-    LinkedNode next;
+    LinkedNode<T> next;
 
     LinkedNode(T value, LinkedNode next) {
         this.value = value;

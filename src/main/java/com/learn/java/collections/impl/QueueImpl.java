@@ -4,13 +4,14 @@ import com.learn.java.collections.Queue;
 
 public class QueueImpl<T> implements Queue<T> {
 
-    private int size;
-    private LinkedNode<T> firstNode;
-    private LinkedNode<T> lastNode;
+    protected int size;
+    protected LinkedNode<T> firstNode;
+    protected LinkedNode<T> lastNode;
 
     public QueueImpl(){
         size = 0;
         firstNode = null;
+        lastNode = null;
     }
 
     @Override
