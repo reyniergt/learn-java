@@ -38,14 +38,9 @@ public class PriorityQueueTest {
         Assert.assertEquals(250, queue.dequeue().getPriority());
     }
 
-
-
     private static class PriorityObjectTest extends PriorityObject {
-
         public PriorityObjectTest(int priority) {
             super(priority);
         }
-
-
     }
 }
