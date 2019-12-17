@@ -33,7 +33,6 @@ public class QueueImpl<T> implements Queue<T> {
         if(size == 0) {
             throw new EmptyCollectionException();
         }
-
         T value = firstNode.value;
         firstNode = firstNode.next;
         size --;

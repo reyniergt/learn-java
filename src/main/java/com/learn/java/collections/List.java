@@ -21,6 +21,7 @@ public interface List<T> {
      * Get the element in the given position
      * @param position
      */
+
     T get(int position) throws EmptyCollectionException;
 
     /**
@@ -46,4 +47,5 @@ public interface List<T> {
      * Insert an element in a given position
      */
     void insert(T element, int position) throws IndexNotFoundException;
+
 }

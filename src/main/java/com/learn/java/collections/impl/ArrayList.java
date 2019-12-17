@@ -41,7 +41,6 @@ public class ArrayList<T> implements List<T> {
             throw new EmptyCollectionException();
         }
         return (T)array[position];
-
     }
 
     @Override
