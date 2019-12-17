@@ -1,6 +1,8 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.List;
+import com.learn.java.collections.exceptions.EmptyCollectionException;
+import com.learn.java.collections.exceptions.IndexNotFoundException;
 
 public class LinkedList<T> implements List<T> {
 
@@ -33,30 +35,39 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public T get(int position) {
+    public T get(int position) throws EmptyCollectionException {
         LinkedNode<T> node = firstNode;
-        for (int i = 0; i < position; i++) {
-            node = node.next;
-        }
+        if(size == 0){
+             throw new EmptyCollectionException();
+         }
+         for (int i = 0; i < position; i++) {
+             node = node.next;
+         }
         return node.value;
     }
 
     @Override
-    public void removeAt(int position) {
-        if(position == 0){
+    public void removeAt(int position) throws EmptyCollectionException, IndexNotFoundException {
+        if(size == 0){
+            throw new EmptyCollectionException();
+        }
+        if (position > size) {
+            throw new IndexNotFoundException();
+        }
+        if (position == 0) {
             firstNode = firstNode.next;
         } else {
             LinkedNode node = firstNode;
-            for (int i = 0; i < position -1; i++) {
+            for (int i = 0; i < position - 1; i++) {
                 node = node.next;
             }
             node.next = node.next.next;
 
-            if(node.next == null){
+            if (node.next == null) {
                 lastNode = node;
             }
         }
-        size --;
+        size--;
     }
 
     @Override
@@ -77,12 +88,15 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public void insert(T element, int position) {
+    public void insert(T element, int position) throws IndexNotFoundException {
         LinkedNode<T> newNode = new LinkedNode(element);
         if (position == 0) {
             newNode.next = firstNode;
             firstNode = newNode;
         } else {
+            if (position > size) {
+                throw new IndexNotFoundException();
+            }
             LinkedNode nodeAux = firstNode;
             for (int i = 0; i < position - 1; i++) {
                 nodeAux = nodeAux.next;

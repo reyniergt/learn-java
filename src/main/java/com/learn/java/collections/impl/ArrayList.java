@@ -1,6 +1,8 @@
 package com.learn.java.collections.impl;
 
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 import com.learn.java.collections.List;
+import com.learn.java.collections.exceptions.IndexNotFoundException;
 
 
 public class ArrayList<T> implements List<T> {
@@ -34,16 +36,26 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public T get(int position) {//1
+    public T get(int position) throws EmptyCollectionException {//1
+        if(isEmpty()){
+            throw new EmptyCollectionException();
+        }
         return (T)array[position];
+
     }
 
     @Override
-    public void removeAt(int position) {//n
-        for (int i = position; i < size - 1; i++) {//n
-            array[i] = array[i+1];
+    public void removeAt(int position) throws EmptyCollectionException, IndexNotFoundException {//n
+        if(size == 0) {
+            throw new EmptyCollectionException();
         }
-        size --;
+        if(position > size){
+            throw new IndexNotFoundException();
+        }
+        for (int i = position; i < size - 1; i++) {//n
+            array[i] = array[i + 1];
+        }
+        size--;
     }
 
     @Override
@@ -62,7 +74,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void insert(T element, int position) {
+    public void insert(T element, int position) throws IndexNotFoundException {
 
         if(array.length == size) {
             Object[] arrayAux = new Object[size + 10];
@@ -71,6 +83,9 @@ public class ArrayList<T> implements List<T> {
             }
             array = arrayAux;
         }else {
+            if(position > size) {
+                throw new IndexNotFoundException();
+            }
             for (int i = size - 1; i >= position; i--) {
                 array[i + 1] = array[i];
             }

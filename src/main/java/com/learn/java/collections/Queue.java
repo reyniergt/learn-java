@@ -1,5 +1,7 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.exceptions.EmptyCollectionException;
+
 /**
  * Collection of elements with FIFO behaviour
  */
@@ -15,7 +17,7 @@ public interface Queue<T> {
      * removes and returns the first added element
      * @return
      */
-    T dequeue();
+    T dequeue() throws EmptyCollectionException;
 
     /**
      * returns the amount of elements

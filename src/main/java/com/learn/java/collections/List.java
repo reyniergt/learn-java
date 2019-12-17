@@ -1,5 +1,8 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.exceptions.EmptyCollectionException;
+import com.learn.java.collections.exceptions.IndexNotFoundException;
+
 /** A collection of elements that keeps insertion order **/
 public interface List<T> {
     /**
@@ -18,13 +21,13 @@ public interface List<T> {
      * Get the element in the given position
      * @param position
      */
-    T get(int position);
+    T get(int position) throws EmptyCollectionException;
 
     /**
      * Remove the element in the given position
      * @param position
      */
-    void removeAt(int position);
+    void removeAt(int position) throws EmptyCollectionException, IndexNotFoundException;
 
     /**
      * Find the position of the given element
@@ -42,5 +45,5 @@ public interface List<T> {
     /**
      * Insert an element in a given position
      */
-    void insert(T element, int position);
+    void insert(T element, int position) throws IndexNotFoundException;
 }

@@ -1,5 +1,6 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 import com.learn.java.collections.impl.QueueImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,7 +16,7 @@ public class QueueTest {
     }
 
     @Test
-    public void enqueueDequeueTests() {
+    public void enqueueDequeueTests() throws EmptyCollectionException {
         Assert.assertTrue("The queue should be empty",
                 queue.isEmpty());
 
@@ -40,5 +41,11 @@ public class QueueTest {
 
         Assert.assertTrue("The queue should be empty",
                 queue.isEmpty());
+    }
+
+
+    @Test(expected = EmptyCollectionException.class)
+    public void dequeueEmptyCollectionExceptionTest() throws EmptyCollectionException {
+        queue.dequeue();
     }
 }
