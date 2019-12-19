@@ -37,9 +37,6 @@ public class SetList<T> implements Set<T> {
 
     @Override
     public boolean find(T element) {
-        if(size == 0 && firstNode.value == element){
-            return true;
-        }
         LinkedNode<T> nodeAux = firstNode;
         for (int i = 0; i < size; i++) {
             if(nodeAux.value == element){
@@ -52,17 +49,22 @@ public class SetList<T> implements Set<T> {
 
     @Override
     public boolean remove(T element) {
-        if(size == 0 && firstNode.value == element){
-            firstNode = null;
-            return true;
-        }
-        LinkedNode<T> nodeAux = firstNode;
-        for (int i = 0; i < size; i++) {
-            if(nodeAux.value == element){
-
+        if(size == 1){
+            if(firstNode.value == element) {
+                firstNode = null;
+                size--;
                 return true;
             }
-            nodeAux = nodeAux.next;
+        }else {
+            LinkedNode<T> nodeAux = firstNode;
+            for (int i = 0; i < size; i++) {
+                if (nodeAux.value == element) {
+                    nodeAux = nodeAux.next;
+                    size--;
+                    return true;
+                }
+                nodeAux = nodeAux.next;
+            }
         }
         return false;
     }
