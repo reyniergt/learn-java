@@ -1,6 +1,7 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Stack;
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 
 public class StackImpl<T> implements Stack<T> {
     private int size;
@@ -18,7 +19,10 @@ public class StackImpl<T> implements Stack<T> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws EmptyCollectionException {
+        if(size == 0) {
+            throw new EmptyCollectionException();
+        }
         T value = firstNode.value;
         firstNode = firstNode.next;
         size --;
@@ -26,7 +30,10 @@ public class StackImpl<T> implements Stack<T> {
     }
 
     @Override
-    public T top() {
+    public T top() throws EmptyCollectionException {
+        if(size == 0) {
+            throw new EmptyCollectionException();
+        }
         return firstNode.value;
     }
 

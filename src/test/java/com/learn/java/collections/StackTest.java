@@ -1,6 +1,6 @@
 package com.learn.java.collections;
 
-import com.learn.java.collections.impl.QueueImpl;
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 import com.learn.java.collections.impl.StackImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,7 +16,7 @@ public class StackTest {
     }
 
     @Test
-    public void pushPopTests() {
+    public void pushPopTests() throws EmptyCollectionException {
         Assert.assertTrue("The stack should be empty",
                 stack.isEmpty());
 
@@ -43,5 +43,15 @@ public class StackTest {
 
         Assert.assertTrue("The stack should be empty",
                 stack.isEmpty());
+    }
+
+    @Test(expected = EmptyCollectionException.class)
+    public void popEmptyCollectionExceptionTest() throws EmptyCollectionException {
+        stack.pop();
+    }
+
+    @Test(expected = EmptyCollectionException.class)
+    public void topEmptyCollectionExceptionTest() throws EmptyCollectionException {
+        stack.top();
     }
 }

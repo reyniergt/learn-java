@@ -1,5 +1,6 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 import com.learn.java.collections.impl.PriorityObject;
 import com.learn.java.collections.impl.PriorityQueue;
 import com.learn.java.collections.impl.QueueImpl;
@@ -17,7 +18,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    public void enqueueDequeueTests() {
+    public void enqueueDequeueTests() throws EmptyCollectionException {
 
         queue.enqueue(new PriorityObjectTest(100));
         queue.enqueue(new PriorityObjectTest(150));

@@ -1,6 +1,7 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Queue;
+import com.learn.java.collections.exceptions.EmptyCollectionException;
 
 public class QueueImpl<T> implements Queue<T> {
 
@@ -28,7 +29,10 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     @Override
-    public T dequeue() {
+    public T dequeue() throws EmptyCollectionException {
+        if(size == 0) {
+            throw new EmptyCollectionException();
+        }
         T value = firstNode.value;
         firstNode = firstNode.next;
         size --;
