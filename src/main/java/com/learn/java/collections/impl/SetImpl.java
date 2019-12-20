@@ -1,14 +1,13 @@
 package com.learn.java.collections.impl;
 
 import com.learn.java.collections.Set;
-
-public class SetList<T> implements Set<T> {
+public class SetImpl<T> implements Set<T> {
 
     public int size;
     private LinkedNode<T> firstNode;
     private LinkedNode<T> lastNode;
 
-    public SetList(){
+    public SetImpl(){
         size = 0;
         firstNode = null;
         lastNode = null;
@@ -26,10 +25,11 @@ public class SetList<T> implements Set<T> {
         } else {
             if(find(element)){
                 return false;
+            }else {
+                LinkedNode next = new LinkedNode(element);
+                lastNode.next = next;
+                lastNode = next;
             }
-            LinkedNode next = new LinkedNode(element);
-            lastNode.next = next;
-            lastNode = next;
         }
         size ++;
         return true;
@@ -39,7 +39,7 @@ public class SetList<T> implements Set<T> {
     public boolean find(T element) {
         LinkedNode<T> nodeAux = firstNode;
         for (int i = 0; i < size; i++) {
-            if(nodeAux.value == element){
+            if (nodeAux.value.equals(element)) {
                 return true;
             }
             nodeAux = nodeAux.next;
@@ -49,18 +49,22 @@ public class SetList<T> implements Set<T> {
 
     @Override
     public boolean remove(T element) {
-        if(size == 1){
-            if(firstNode.value == element) {
-                firstNode = null;
+        if(firstNode.value.equals(element)) {
+            System.out.println("Primer Nodo");
+                firstNode = firstNode.next;
                 size--;
                 return true;
-            }
         }else {
             LinkedNode<T> nodeAux = firstNode;
             for (int i = 0; i < size; i++) {
-                if (nodeAux.value == element) {
-                    nodeAux = nodeAux.next;
+                System.out.println("Inicio");
+                if (nodeAux.next != null && nodeAux.next.value.equals(element)) {
+                    nodeAux.next = nodeAux.next.next;
                     size--;
+                    if(nodeAux == null){
+                        lastNode = nodeAux;
+                    }
+                    System.out.println("Fin");
                     return true;
                 }
                 nodeAux = nodeAux.next;
