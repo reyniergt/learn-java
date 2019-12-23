@@ -49,25 +49,25 @@ public class SetImpl<T> implements Set<T> {
 
     @Override
     public boolean remove(T element) {
-        if(firstNode.value.equals(element)) {
-            System.out.println("Primer Nodo");
+        if(size != 0) {
+            if (firstNode.value.equals(element)) {
+                System.out.println("Primer Nodo");
                 firstNode = firstNode.next;
                 size--;
                 return true;
-        }else {
-            LinkedNode<T> nodeAux = firstNode;
-            for (int i = 0; i < size; i++) {
-                System.out.println("Inicio");
-                if (nodeAux.next != null && nodeAux.next.value.equals(element)) {
-                    nodeAux.next = nodeAux.next.next;
-                    size--;
-                    if(nodeAux == null){
-                        lastNode = nodeAux;
+            } else {
+                LinkedNode<T> nodeAux = firstNode;
+                for (int i = 0; i < size; i++) {
+                    if (nodeAux.next != null && nodeAux.next.value.equals(element)) {
+                        nodeAux.next = nodeAux.next.next;
+                        size--;
+                        if (nodeAux == null) {
+                            lastNode = nodeAux;
+                        }
+                        return true;
                     }
-                    System.out.println("Fin");
-                    return true;
+                    nodeAux = nodeAux.next;
                 }
-                nodeAux = nodeAux.next;
             }
         }
         return false;
