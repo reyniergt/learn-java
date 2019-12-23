@@ -51,7 +51,6 @@ public class SetImpl<T> implements Set<T> {
     public boolean remove(T element) {
         if(size != 0) {
             if (firstNode.value.equals(element)) {
-                System.out.println("Primer Nodo");
                 firstNode = firstNode.next;
                 size--;
                 return true;
