@@ -17,8 +17,7 @@ public class SetImpl<T> implements Set<T> {
     public int size() { return size; }
 
     @Override
-    public boolean add(T element) {//n
-
+    public boolean add(T element) {
         if(size == 0){
             firstNode = new LinkedNode(element);
             lastNode = firstNode;
