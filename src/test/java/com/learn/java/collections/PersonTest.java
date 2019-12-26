@@ -1,10 +1,13 @@
 package com.learn.java.collections;
 
+import com.learn.java.collections.impl.ArrayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class PersonTest {
@@ -21,6 +24,16 @@ public class PersonTest {
             this.age = age;
             this.address = address;
         }
+
+        @Override
+        public int hashCode() {
+            return id.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof Person && id.equals(((Person) obj).id);
+        }
     }
 
     @Test
@@ -36,6 +49,26 @@ public class PersonTest {
 
         Assert.assertFalse("Pepe was added, but is duplicated",
                 persons.add(new Person("12345", "Pepe", 33, "Address 1")));
+    }
 
+    @Test
+    public void countOfRepeatedPersonsTest () {
+        Person[] persons = new Person[]{
+                new Person("123", "Person1",25, "1"),
+                new Person("1234", "Person2",25, "1"),
+                new Person("123", "Person1",25, "1"),
+                new Person("123", "Person1",25, "1"),
+                new Person("1234", "Person2",25, "1"),
+                new Person("123", "Person1",25, "1")
+        };
+
+        Map<Person, Integer> mapPersons = countOfRepeatedPersons(persons);
+
+        Assert.assertEquals(4, mapPersons.get(new Person("123", "Person1",25, "1")).intValue());
+        Assert.assertEquals(2, mapPersons.get(new Person("1234", "Person1",25, "1")).intValue());
+    }
+
+    private static Map<Person, Integer> countOfRepeatedPersons(Person[] persons){
+        return new HashMap<>();
     }
 }
