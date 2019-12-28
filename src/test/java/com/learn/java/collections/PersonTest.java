@@ -35,7 +35,7 @@ public class PersonTest {
     }
 
     @Test
-    public void findPersonOkTest (){
+    public void addPersonsTest (){
         Person pepe = new Person("12345", "Pepe", 33, "Address 1");
         Person pablo = new Person("12346", "Pablo", 35, "Address 2");
         Person pedro = new Person("12347", "Pedro", 30, "Address 3");
