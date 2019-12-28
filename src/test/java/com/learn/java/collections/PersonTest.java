@@ -1,8 +1,6 @@
 package com.learn.java.collections;
 
-import com.learn.java.collections.impl.ArrayList;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -69,6 +67,11 @@ public class PersonTest {
     }
 
     private static Map<Person, Integer> countOfRepeatedPersons(Person[] persons){
-        return new HashMap<>();
+        Map<Person, Integer> mapPersons = new HashMap<>();
+        for (int i = 0; i < persons.length; i++) {
+            int value = mapPersons.getOrDefault(persons[i], 0);
+            mapPersons.put(persons[i], value + 1);
+        }
+        return mapPersons;
     }
 }
