@@ -1,0 +1,14 @@
+---
+topics:
+- name: "topic1"
+  subscriptions:
+  - name: "subscription1"
+    pushEndpoint: null
+  - name: "subscription2"
+    pushEndpoint: "someEndpoint"
+- name: "topic2"
+  subscriptions:
+  - name: "subscription3"
+    pushEndpoint: null
+  - name: "subscription4"
+    pushEndpoint: "someOtherEndpoint"
